@@ -21,7 +21,7 @@ class NetworkLayer extends Controller
 
 
     /**
-     * Instantiate a new QuickbooksController instance.
+     * Instantiate a new NetworkController instance.
      */
     public function __construct()
     {
@@ -58,26 +58,31 @@ class NetworkLayer extends Controller
 
     public function networkCall($body = null, $method = null, $route = null)
     {
-                dd("hamza", $this->client);
+        // dd("client", $this->client);
+        // dd("body", $body, $method, $route);
 
 
-        $searchRequest = new GuzzleRequest($method,
+        try{
+            $searchRequest = new GuzzleRequest($method,
             $route,
             $this->headers,
             $body
         );
-                dd("hamza", $searchRequest);
+        // dd("searchRequest", $searchRequest);
 
         $response = $this->client->send($searchRequest);
 
-        return $response->getBody()->getContents();
-        // $statusCode = $response->getStatusCode();
+        $responseContent = $response->getBody()->getContents();
 
-        // $decodedResponse = $statusCode == Constants::Unauthorized401 ? $response->getStatusCode() : json_decode( $responseContent, true );
+        $responseContentDecoded = json_decode($responseContent);
+
+        return $responseContentDecoded;
+
+        } catch (\Throwable $e) {
+            return response()->json(['error' => $e->getMessage()], 400);
+        }
 
 
-
-        // return $decodedResponse;
     }
 
 
