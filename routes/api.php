@@ -23,5 +23,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // Route::get('/testing-network-layer', [NetworkLayer::class, 'networkCall']);
 
-Route::get('/nafath/create-request', [NafathController::class, 'createRequest']);
-Route::get('/nafath/request-status', [NafathController::class, 'requestStatus']);
+Route::post('/nafath/create-request', [NafathController::class, 'createRequest']);
+Route::post('/nafath/request-status', [NafathController::class, 'requestStatus']);
