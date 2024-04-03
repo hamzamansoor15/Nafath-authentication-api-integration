@@ -25,3 +25,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/nafath/create-request', [NafathController::class, 'createRequest']);
 Route::post('/nafath/request-status', [NafathController::class, 'requestStatus']);
+Route::post('/nafath/get-detail-by-national-id', [NafathController::class, 'getJwtByNationalId']);
+Route::get('/nafath/get-jwk', [NafathController::class, 'getJwk']);
+Route::get('/nafath/callback', [NafathController::class, 'getJwk']);
+

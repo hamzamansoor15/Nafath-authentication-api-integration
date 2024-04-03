@@ -27,7 +27,7 @@ class NafathController extends NetworkLayer
         $locale = 'en';
         $requestId = Str::uuid()->toString();
         $end_point = "stg/api/v1/mfa/request?local=$locale&requestId=".$requestId;
-        $service  = "openAccount";
+        $service  = "RequestDigitalServicesEnrollment";
 
 
 
@@ -99,6 +99,86 @@ class NafathController extends NetworkLayer
 
 
         dd("requestStatus", $nafath);
+        }
+        catch (\Throwable $e) {
+                return response()->json(['error' => $e->getMessage()], 500);
+        }
+
+
+    }
+
+
+    public function getJwtByNationalId(Request $request){
+
+         $validator = Validator::make($request->all(), [
+            'national_id' => 'required|min:10|max:10|exists:nafath,national_id',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
+
+        try{
+
+            $jwt = Nafath::where('national_id', $request->input('national_id') )->first();
+
+
+            return response()->json([
+                    'data' => $jwt,
+                    'message' => "Nafath Details Retrieved successfully"
+                ], 200);
+
+        }
+        catch (\Throwable $e) {
+                return response()->json(['error' => $e->getMessage()], 500);
+        }
+
+
+    }
+
+    public function getJwk(Request $request){
+
+        try{
+            $end_point = "stg/api/v1/mfa/jwk";
+            $response =  $this->networkCall(null, "GET", $end_point);
+
+            return response()->json([
+                'data' => $response,
+                'message' => "Jwk retrieved successfully"
+            ], 200);
+
+
+        }
+        catch (\Throwable $e) {
+                return response()->json(['error' => $e->getMessage()], 500);
+        }
+
+
+    }
+
+    public function nafathCallback(Request $request){
+
+         $validator = Validator::make($request->all(), [
+            'token' => 'required|string|min:10|max:10|exists:nafath,national_id',
+            'transId' => 'required|string|min:10|max:10|exists:nafath,national_id',
+            'requestid' => 'required|string|min:10|max:10|exists:nafath,national_id',
+
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
+
+        try{
+
+            $jwt = Nafath::where('national_id', $request->input('national_id') )->first();
+
+
+            return response()->json([
+                    'data' => $jwt,
+                    'message' => "Nafath Details Retrieved successfully"
+                ], 200);
+
         }
         catch (\Throwable $e) {
                 return response()->json(['error' => $e->getMessage()], 500);
