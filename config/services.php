@@ -31,4 +31,17 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'nafath' => [
+        // stage
+        'stage_app_id' => env('NAFATH_STAGE_APP_ID'),
+        'stage_app_key' => env('NAFATH_STAGE_APP_KEY'),
+        'stage_base_url'=>env('NAFATH_STAGE_BASE_URL'),
+
+        // prod
+        'prod_app_id' => env('NAFATH_PROD_APP_ID'),
+        'prod_app_key' => env('NAFATH_PROD_APP_KEY'),
+        'prod_base_url' =>env('NAFATH_PROD_BASE_URL'),
+
+    ],
+
 ];
