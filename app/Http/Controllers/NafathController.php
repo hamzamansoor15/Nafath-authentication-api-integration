@@ -71,6 +71,39 @@ class NafathController extends NetworkLayer
     }
 
     public function requestStatus(Request $request){
-        dd("requestStatus");
+
+         $validator = Validator::make($request->all(), [
+            'national_id' => 'required|min:10|max:10|exists:nafath,national_id',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
+
+        try{
+
+            $nafath = Nafath::where('national_id', $request->input('national_id') )->first();
+            $body = [
+                'nationalId' => $nafath->national_id,
+                "transId" => $nafath->trans_id,
+                "random" => $nafath->random_token
+            ];
+            $end_point = "stg/api/v1/mfa/request/status";
+
+            $status =  $this->networkCall(json_encode($body), "POST", $end_point);
+
+            return response()->json([
+                    'data' => $status,
+                    'message' => "Status Retrieved successfully"
+                ], 200);
+
+
+        dd("requestStatus", $nafath);
+        }
+        catch (\Throwable $e) {
+                return response()->json(['error' => $e->getMessage()], 500);
+        }
+
+
     }
 }
