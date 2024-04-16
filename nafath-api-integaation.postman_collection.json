@@ -1,0 +1,193 @@
+{
+	"info": {
+		"_postman_id": "97e8004d-eda0-479a-8a1a-d338d23ca021",
+		"name": "nafath-hamza",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13371783"
+	},
+	"item": [
+		{
+			"name": "create-request",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"national_id\": \"1069867255\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/nafath/create-request",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"nafath",
+						"create-request"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "request-status",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"national_id\": \"1069867255\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/nafath/request-status",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"nafath",
+						"request-status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetJwk",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "APP-ID",
+						"value": "{{APP-ID}}",
+						"type": "text"
+					},
+					{
+						"key": "APP-KEY",
+						"value": "{{APP-KEY}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/nafath/get-jwk",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"nafath",
+						"get-jwk"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-details-by-national-id",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"national_id\": \"1069867255\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/nafath/get-detail-by-national-id",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"nafath",
+						"get-detail-by-national-id"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "nafath-callback",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"token\":\"eyJraWQiOiJlbG0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiIxMDY3MzA1NDU2IiwiZmF0aGVyTmFtZSI6ItmF2K3ZhdivIiwiZHJpdmluZ0xpY2Vuc2VzIjpbXSwiZ2VuZGVyIjoiTSIsImRhdGVPZkJpcnRoRyI6IjA0LTExLTE5OTAiLCJ0cmFuc0lkIjoiN2UzZDBmOGUtZGFmMC00NWNkLTlmNWEtMjY2ZmU4YzcwMzY3IiwiZGF0ZU9mQmlydGhIIjoiMTctMDQtMTQxMSIsImdyYW5kRmF0aGVyTmFtZSI6ItmF2LXYt9mB2YkiLCJpc3MiOiJodHRwczpcL1wvbmFmYXRoLmFwaS5lbG0uc2EiLCJuYXRpb25hbGl0eUNvZGUiOiIxMTMiLCJuaW4iOiIxMDY3MzA1NDU2IiwiZW5nbGlzaFRoaXJkTmFtZSI6Ik1VU1RBRkEiLCJpZFZlcnNpb25OdW1iZXIiOjYsImZhbWlseU5hbWUiOiLYp9mE2KzZh9mG2YoiLCJsb2dJZCI6MTk0NjMzNDA3NywiZXhwIjoxNjg5MjQ1MTU1LCJpZElzc3VlUGxhY2UiOiLYp9mE2K_Ysdi52YrYqSIsImlhdCI6MTY4OTI0NTAwNSwianRpIjoiNjRhZmQ1MGNkYjgyYiIsIm5hdGlvbmFsQWRkcmVzcyI6W3sic3RyZWV0TmFtZSI6IlByaW5jZSBTYXVkIEJpbiAgTXVoYW1tYWQgQmluICBTYXVkIiwiY2l0eSI6IlJJWUFESCIsImRpc3RyaWN0IjoiS2luZyBGYWhkIERpc3QuIiwiYWRkaXRpb25hbE51bWJlciI6Ijc5MjIiLCJidWlsZGluZ051bWJlciI6IjMxODkiLCJ1bml0TnVtYmVyIjoibnVsbCIsImlzUHJpbWFyeUFkZHJlc3MiOiJ0cnVlIiwicG9zdENvZGUiOiIxMjI3NCIsImxvY2F0aW9uQ29vcmRpbmF0ZXMiOiI0Ni42NzAyNzczOCAyNC43NDY0NTc2NiJ9LHsic3RyZWV0TmFtZSI6IkFobWFkIFNhbWVoIEFsIEtoYWxkaSIsImNpdHkiOiJKRUREQUgiLCJkaXN0cmljdCI6IkFsIE11cmphbiBEaXN0LiIsImFkZGl0aW9uYWxOdW1iZXIiOiI0MDk2IiwiYnVpbGRpbmdOdW1iZXIiOiI2NzI3IiwidW5pdE51bWJlciI6Im51bGwiLCJpc1ByaW1hcnlBZGRyZXNzIjoiZmFsc2UiLCJwb3N0Q29kZSI6IjIzNzE1IiwibG9jYXRpb25Db29yZGluYXRlcyI6IjM5LjEwNjIyMDA3IDIxLjY5NzI0ODE4In1dLCJpZElzc3VlRGF0ZSI6IjI3LTEyLTE0NDEiLCJpZEV4cGlyeURhdGVHIjoiMjItMDYtMjAyNSIsImVuZ2xpc2hMYXN0TmFtZSI6IkFMSlVIQU5JIiwiZW5nbGlzaEZpcnN0TmFtZSI6IkJBREVSIiwiaWRFeHBpcnlEYXRlIjoiMjYtMTItMTQ0NiIsImF1ZCI6Imh0dHBzOlwvXC9iYWNrZW5kLmRuYW5lZXIuY29tXC9hcGlcL25hZmF0aC1jYWxsYmFjayIsImZpcnN0TmFtZSI6Itio2K_YsSIsIm5iZiI6MTY4OTI0NTAwNSwiUGVyc29uSWQiOjEwNjczMDU0NTYsIm5hdGlvbmFsaXR5IjoiU0FVIiwiU2VydmljZU5hbWUiOiJPcGVuQWNjb3VudCIsImp3a3NfdXJpIjoiaHR0cHM6XC9cL25hZmF0aC5hcGkuZWxtLnNhXC9hcGlcL3YxXC9tZmFcL2p3ayIsImlkSXNzdWVEYXRlRyI6IjE3LTA4LTIwMjAiLCJlbmdsaXNoU2Vjb25kTmFtZSI6Ik1PSEFNTUVEIiwic3RhdHVzIjoiQ09NUExFVEVEIn0.OlrAvDIAlkOLaIXdZZcGn8Egm9L8fgXY8N-xWab7fej1Y0b0WLTDldOBvspGfsHdywtcl9R1Vl7bjSCYWY76EGibipmzVsoAv2L_C8IDL648OaDMH2iDvBp6qOTPRiGBUPbrCz_xj4jY4G_QkK06pJjTgqUpWEQAxNbD22uzWXzlcJMLcb6eI0oXY5RsjfTgzmE1rIy88kL6_YYcw3FroCBIEFy4ZGKUbDrWczn2XsQ2jzko93vik_qQ2rRoF4Bd9IsKd5SgwgzyD-QJqezmznKFmaMvVASRSxVJj-UvgIGr-lPrbj6gFn1lKzV3xiyNvg7D0BdfVQUJWn4Rjoxjfg\",\n        \"transId\":\"7e3d0f8e-daf0-45cd-9f5a-266fe8c70367\",\n        \"requestId\":\"64afd50cdb82b\"\n    }\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/nafath/callback",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"nafath",
+						"callback"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
